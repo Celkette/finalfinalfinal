@@ -123,4 +123,26 @@ int	pipex_creat_here_doc(char *lim)
     }
     close(here_doc_fd);
 	return (pipex_open_file("HereD.txt", O_RDONLY));
+} 
+/*
+static void	handle_here_doc(char const **argv, t_pipex_data *data)
+{
+	char	*line;
+	size_t	line_len;
+	t_pipe	in_pipe;
+
+	if (pipe((int *)(&in_pipe)) == -1)
+		safe_exit();
+	data->here_doc = true;
+	while (true)
+	{
+		line = get_next_line(1);
+		line_len = ft_strlen(line);
+		if (line_len > 1 && ft_strncmp(line, argv[2], line_len - 1) == 0)
+			break ;
+		write(in_pipe.write, line, line_len);
+	}
+	free_garbadge();
+	data->here_doc_pipe = in_pipe;
 }
+*\
